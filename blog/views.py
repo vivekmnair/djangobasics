@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
-posts=[
+""" posts=[
     {
         "author":"Dhaneesh",
         "title":"Blog Post1",
@@ -14,13 +15,15 @@ posts=[
         "content":"Second Page Content",
         "date_posted":"August 9, 2020"
     }
-]
+] """
+
 
 # Create your views here.
 def home(request):
     context={
         "title":"how title template passing works",
-        "posts":posts,
+        "posts":Post.objects.all()
+        
     }
     #return HttpResponse("<h1>Blog Home</h1>")
     return render(request,"blog/home.html",context)
